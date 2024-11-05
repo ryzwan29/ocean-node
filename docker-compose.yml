@@ -26,7 +26,7 @@ services:
       INTERFACES: '["HTTP","P2P"]'
 #      ALLOWED_VALIDATORS: ''
 #      INDEXER_NETWORKS: '[]'
-      ALLOWED_ADMINS: '["0x0879B2E1B0Ac85555aE2aFFb429466393B9981D0"]'
+      ALLOWED_ADMINS: '["<your_wallet_address>"]'
 #      INDEXER_INTERVAL: ''
       DASHBOARD: 'true'
 #      RATE_DENY_LIST: ''
