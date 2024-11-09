@@ -37,7 +37,7 @@ Site : [Ocean](https://oceanprotocol.com/) | Docs : [Oceandocs](https://docs.oce
 # Run installation ocean node
 ```
 mkdir ocean && cd ocean
-source <(curl -s https://raw.githubusercontent.com/ryzwan29/ocean-node/quick-install.sh)
+source <(curl -s https://raw.githubusercontent.com/ryzwan29/ocean-node/main/quick-install.sh)
 ```
 1. Do you have your private key for running the Ocean Node [ y/n ]: n
 2. Do you want me to create a private key for you [ y/n ]: y
