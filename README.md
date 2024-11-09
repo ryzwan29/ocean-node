@@ -34,38 +34,10 @@ Site : [Ocean](https://oceanprotocol.com/) | Docs : [Oceandocs](https://docs.oce
 - Docker
 - Docker Compose
 
-### Install dependencies :
-```
-sudo apt-get update && sudo apt-get upgrade -y
-sudo apt install curl git jq lz4 build-essential unzip -y
-sudo apt install ca-certificates -y
-```
-### Install Docker & Docker Compose [From Docker Site](https://docs.docker.com/engine/install/):
-Skip if you already have it
-```
-# Add Docker's official GPG key:
-sudo apt-get update
-sudo apt-get install ca-certificates curl
-sudo install -m 0755 -d /etc/apt/keyrings
-sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-sudo chmod a+r /etc/apt/keyrings/docker.asc
-
-# Add the repository to Apt sources:
-echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
-  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt-get update
-```
-Install the latest version
-```
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-```
-
 # Run installation ocean node
 ```
 mkdir ocean && cd ocean
-source <(curl -s https://raw.githubusercontent.com/oceanprotocol/ocean-node/main/scripts/ocean-node-quickstart.sh)
+source <(curl -s https://raw.githubusercontent.com/ryzwan29/ocean-node/quick-install.sh)
 ```
 1. Do you have your private key for running the Ocean Node [ y/n ]: n
 2. Do you want me to create a private key for you [ y/n ]: y
