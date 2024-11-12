@@ -23,9 +23,6 @@ sudo apt-get update
 # Install docker latest version
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose docker-compose-plugin -y 
 
-# Create new directory
-mkdir ocean && cd ocean
-
 ## Installation start here
 validate_hex() {
   if [[ ! "$1" =~ ^0x[0-9a-fA-F]{64}$ ]]; then
