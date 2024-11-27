@@ -192,7 +192,7 @@ services:
       P2P_ipV6BindAddress: '::'
       P2P_ipV6BindTcpPort: '$P2P_ipV6BindTcpPort'
       P2P_ipV6BindWsPort: '$P2P_ipV6BindWsPort'
-      P2P_ANNOUNCE_ADDRESSES: '$P2P_ANNOUNCE_ADDRESSES'\
+      P2P_ANNOUNCE_ADDRESSES: '$P2P_ANNOUNCE_ADDRESSES'
       P2P_FILTER_ANNOUNCED_ADDRESSES: '["127.0.0.0/8","10.0.0.0/8","172.16.0.0/12","192.168.0.0/16"]'
 #      P2P_ANNOUNCE_PRIVATE: ''
 #      P2P_pubsubPeerDiscoveryInterval: ''
