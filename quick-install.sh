@@ -121,6 +121,11 @@ validate_port "$P2P_ipV6BindWsPort"
 
 read -p "Provide the public IPv4 address or FQDN where this node will be accessible: " P2P_ANNOUNCE_ADDRESS
 
+read -p "Input your RPC ETH Mainnet: " RPC_ETH_MAINNET
+read -p "Input your RPC ETH Sepolia: " RPC_ETH_SEPOLIA
+read -p "Input your RPC Optimism Mainnet: " RPC_OPTIMISM_MAINNET
+read -p "Input your RPC Polygon Mainnet: " RPC_POLYGON_MAINNET
+
 if [ -n "$P2P_ANNOUNCE_ADDRESS" ]; then
   validate_ip_or_fqdn "$P2P_ANNOUNCE_ADDRESS"
   if [ $? -ne 0 ]; then
@@ -157,8 +162,8 @@ services:
       - "$P2P_ipV6BindWsPort:$P2P_ipV6BindWsPort"
     environment:
       PRIVATE_KEY: '$PRIVATE_KEY'
-      RPCS: '{"1":{"rpc":"https://ethereum-rpc.publicnode.com","fallbackRPCs":["https://rpc.ankr.com/eth","https://1rpc.io/eth","https://eth.api.onfinality.io/public"],"chainId":1,"network":"mainnet","chunkSize":100},"10":{"rpc":"https://mainnet.optimism.io","fallbackRPCs":["https://optimism-mainnet.public.blastapi.io","https://rpc.ankr.com/optimism","https://optimism-rpc.publicnode.com"],"chainId":10,"network":"optimism","chunkSize":100},"137":{"rpc":"https://polygon-rpc.com/","fallbackRPCs":["https://polygon-mainnet.public.blastapi.io","https://1rpc.io/matic","https://rpc.ankr.com/polygon"],"chainId":137,"network":"polygon","chunkSize":100},"23294":{"rpc":"https://sapphire.oasis.io","fallbackRPCs":["https://1rpc.io/oasis/sapphire"],"chainId":23294,"network":"sapphire","chunkSize":100},"23295":{"rpc":"https://testnet.sapphire.oasis.io","chainId":23295,"network":"sapphire-testnet","chunkSize":100},"11155111":{"rpc":"https://eth-sepolia.public.blastapi.io","fallbackRPCs":["https://1rpc.io/sepolia","https://eth-sepolia.g.alchemy.com/v2/demo"],"chainId":11155111,"network":"sepolia","chunkSize":100},"11155420":{"rpc":"https://sepolia.optimism.io","fallbackRPCs":["https://endpoints.omniatech.io/v1/op/sepolia/public","https://optimism-sepolia.blockpi.network/v1/rpc/public"],"chainId":11155420,"network":"optimism-sepolia","chunkSize":100}}'
-      DB_URL: 'http://typesense:8108/?apiKey=xyz'
+      RPCS: '{"1":{"rpc":"$RPC_ETH_MAINNET","fallbackRPCs":["https://rpc.ankr.com/eth","https://1rpc.io/eth","https://eth.api.onfinality.io/public"],"chainId":1,"network":"mainnet","chunkSize":100},"10":{"rpc":"$RPC_OPTIMISM_MAINNET","fallbackRPCs":["https://optimism-mainnet.public.blastapi.io","https://rpc.ankr.com/optimism","https://optimism-rpc.publicnode.com"],"chainId":10,"network":"optimism","chunkSize":100},"137":{"rpc":"$RPC_POLYGON_MAINNET","fallbackRPCs":["https://polygon-mainnet.public.blastapi.io","https://1rpc.io/matic","https://rpc.ankr.com/polygon"],"chainId":137,"network":"polygon","chunkSize":100},"23294":{"rpc":"https://sapphire.oasis.io","fallbackRPCs":["https://1rpc.io/oasis/sapphire"],"chainId":23294,"network":"sapphire","chunkSize":100},"23295":{"rpc":"https://testnet.sapphire.oasis.io","chainId":23295,"network":"sapphire-testnet","chunkSize":100},"11155111":{"rpc":"$RPC_ETH_SEPOLIA","fallbackRPCs":["https://1rpc.io/sepolia","https://eth-sepolia.g.alchemy.com/v2/demo"],"chainId":11155111,"network":"sepolia","chunkSize":100},"11155420":{"rpc":"https://sepolia.optimism.io","fallbackRPCs":["https://endpoints.omniatech.io/v1/op/sepolia/public","https://optimism-sepolia.blockpi.network/v1/rpc/public"],"chainId":11155420,"network":"optimism-sepolia","chunkSize":100}}'
+      DB_URL: 'http://$P2P_ANNOUNCE_ADDRESS:8108/?apiKey=xyz'
       IPFS_GATEWAY: 'https://ipfs.io/'
       ARWEAVE_GATEWAY: 'https://arweave.net/'
 #      LOAD_INITIAL_DDOS: ''
@@ -187,7 +192,8 @@ services:
       P2P_ipV6BindAddress: '::'
       P2P_ipV6BindTcpPort: '$P2P_ipV6BindTcpPort'
       P2P_ipV6BindWsPort: '$P2P_ipV6BindWsPort'
-      P2P_ANNOUNCE_ADDRESSES: '$P2P_ANNOUNCE_ADDRESSES'
+      P2P_ANNOUNCE_ADDRESSES: '$P2P_ANNOUNCE_ADDRESSES'\
+      P2P_FILTER_ANNOUNCED_ADDRESSES: '["127.0.0.0/8","10.0.0.0/8","172.16.0.0/12","192.168.0.0/16"]'
 #      P2P_ANNOUNCE_PRIVATE: ''
 #      P2P_pubsubPeerDiscoveryInterval: ''
 #      P2P_dhtMaxInboundStreams: ''
